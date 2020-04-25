@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BeforeInsert } from "typeorm";
+import { hashSync } from "bcrypt";
 
 import { UserData } from "../../interfaces/user-data/user-data";
 
@@ -62,8 +63,8 @@ export class User {
 
   @BeforeInsert()
   hashPassword() {
-    // if (this._password) {
-    //   this._password = createHmac('sha256', this.password).digest('hex');
-    // }
+    if (this._password) {
+      this._password = hashSync(this._password, +process.env.BCRYPT_SALT_ROUNDS);
+    }
   }
 }
