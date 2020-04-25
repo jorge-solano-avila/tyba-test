@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BeforeInsert } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BeforeInsert, OneToMany } from "typeorm";
 import { hashSync } from "bcrypt";
 
+import { Transaction } from "../transaction/transaction";
 import { UserData } from "../../interfaces/user-data/user-data";
 
 @Entity()
@@ -34,6 +35,9 @@ export class User {
   })
   private _phone: string = null;
 
+  @OneToMany(type => Transaction, transaction => transaction.user)
+  private _transactions: Transaction[];
+
   @CreateDateColumn({
     type: "timestamp with time zone",
     name: "created_at",
@@ -66,5 +70,13 @@ export class User {
     if (this._password) {
       this._password = hashSync(this._password, +process.env.BCRYPT_SALT_ROUNDS);
     }
+  }
+
+  set transactions(value: Transaction[]) {
+    this._transactions = value;
+  }
+
+  get transaction(): Transaction[] {
+    return this._transactions;
   }
 }
