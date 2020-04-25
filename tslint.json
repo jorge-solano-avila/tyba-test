@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "tslint-clean-code",
+    "tslint:recommended"
+  ],
+  "defaultSeverity": "error",
+  "rules": {
+    "interface-name": [true, "never-prefix"],
+    "variable-name": {
+      "options": [
+        "check-format",
+        "allow-leading-underscore",
+        "ban-keywords"
+      ]
+    },
+    "object-literal-sort-keys": false,
+    "max-classes-per-file": false,
+    "member-ordering": false,
+    "ordered-imports": false
+  }
+}
