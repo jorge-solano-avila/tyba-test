@@ -44,6 +44,22 @@ For coverage:
 npm run test:coverage
 ```
 
+## Endpoints
+
+```
+GET http://localhost:10000/api/health/
+```
+
+```
+POST http://localhost:10000/api/users/
+{
+	"name": "Jorge Solano",
+	"email": "jorgesolavila@gmail.com",
+	"password": "12345678",
+	"phone": "3123175237"
+}
+```
+
 ## Versioning
 
 I use [Semantic Versioning](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/jorge52an/tyba-test/tags).
