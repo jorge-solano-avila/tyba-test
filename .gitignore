@@ -1,0 +1,13 @@
+# IDE's configuration
+.idea/
+.vscode/
+
+# Node stuff:
+node_modules/
+
+# Build server
+build/
+
+# Tests
+.nyc_output/
+coverage/
