@@ -1,9 +1,6 @@
 import { NextFunction, Request, Response, Router } from "express";
 
-import {
-  Controller,
-  HealthController,
-} from "./controllers";
+import { Controller, HealthController, UsersController } from "./controllers";
 import { RouteMethod } from "./enums";
 
 /**
@@ -45,12 +42,15 @@ class Route {
             break;
         }
       } catch (error) {
-        response.status(500).send({ detail: "Internal server error." });
+        if (error.statusCode) {
+          response.status(error.statusCode).send({ detail: error.detail });
+        } else {
+          response.status(500).send({ detail: "Internal server error." });
+        }
 
         return;
       }
-      const parsedResponse = controllerResponse.body || null;
-      response.status(controllerResponse.statusCode).send(parsedResponse);
+      response.status(200).send(controllerResponse || null);
     } else {
       next();
     }
@@ -60,6 +60,7 @@ class Route {
 export const initRoutes = (router: Router): Route[] => {
   const routes = [
     new Route(router, "/health/", new HealthController()),
+    new Route(router, "/users/", new UsersController()),
   ];
 
   return routes;
