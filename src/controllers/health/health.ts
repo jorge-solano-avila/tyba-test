@@ -6,7 +6,7 @@ import { Controller } from "../controller";
 export class HealthController extends Controller {
   public async get(): Promise<any> {
     return new Promise((resolve: (value?: any) => void, reject: (reason?: any) => void) => {
-      resolve({ body: "{}", statusCode: 200});
+      resolve(null);
     });
   }
 }
