@@ -9,6 +9,7 @@ services:
       DATABASE_URL: postgres://tyba:s3cr3tTybe1@postgres:5432/tyba
       API_PORT: 10000
       ZOMATO_API_KEY: a990b82268be8a016b1bfb2609c3436f
+      BCRYPT_SALT_ROUNDS: 10
     ports:
       - "10000:10000"
     command: npm start
