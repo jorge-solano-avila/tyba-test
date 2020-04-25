@@ -5,6 +5,6 @@ COPY . .
 
 RUN npm install --production
 
-EXPOSE 10000
+EXPOSE $API_PORT
 
 ENTRYPOINT npm start

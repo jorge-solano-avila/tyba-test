@@ -5,7 +5,6 @@
   ],
   "defaultSeverity": "error",
   "rules": {
-    "newspaper-order" : true,
     "interface-name": [true, "never-prefix"],
     "variable-name": {
       "options": [

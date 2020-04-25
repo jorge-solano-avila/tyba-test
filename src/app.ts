@@ -59,7 +59,7 @@ class App {
         url: process.env.DATABASE_URL,
         synchronize: true,
         entities: [
-          "build/models/**/*.js"
+          "build/models/entities/**/*.js"
         ],
         subscribers: [
           "build/subscribers/*.js"
@@ -68,7 +68,7 @@ class App {
           "build/migrations/*.js"
         ],
         cli: {
-          entitiesDir: "build/models",
+          entitiesDir: "build/models/entities",
           migrationsDir: "build/migrations",
           subscribersDir: "build/subscribers"
         }

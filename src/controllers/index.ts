@@ -1,2 +1,3 @@
-export * from "./controller";
-export * from "./health/health";
+export { Controller } from "./controller";
+export { HealthController } from "./health/health";
+export { UsersController } from "./users/users";
