@@ -2,6 +2,8 @@ import { Connection, getConnection } from "typeorm";
 
 import { User, UserData } from "../../models";
 import { BadRequestException } from "../../exceptions";
+import { TransactionType } from "../../enums";
+import { TransactionService } from "../transaction/transaction";
 
 
 export class UserService {
@@ -23,6 +25,8 @@ export class UserService {
     this._validateData();
     const user = new User(this._data);
     await this._connection.manager.save(user);
+    const transactionService = new TransactionService();
+    await transactionService.create(TransactionType.SIGN_UP, user);
 
     return user;
   }
